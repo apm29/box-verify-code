@@ -29,7 +29,7 @@ export default {
 
 ### API
 ```javascript
-{
+export default {
   props: {
     //格子数量
     size: {
