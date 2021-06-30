@@ -1,5 +1,5 @@
 <template>
-  <label class="tw-flex tw-flex-nowrap tw-justify-center">
+  <label class="input-container">
     <input
       :value="nonNullValue(captcha[index])"
       class="input-cell"
@@ -19,7 +19,7 @@
     />
   </label>
   <transition>
-    <div class="tw-text-red-500 tw-text-sm" v-if="error">{{ error }}</div>
+    <div class="error-text" v-if="error">{{ error }}</div>
   </transition>
 </template>
 
@@ -213,6 +213,16 @@ export default {
 };
 </script>
 <style scoped>
+.input-container{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-items: center;
+  justify-content: center;
+}
+.error-text{
+  color: darkred;
+  font-size: small;
+}
 .input-cell {
   --tw-ring-inset: 8px;
   height: 3rem;

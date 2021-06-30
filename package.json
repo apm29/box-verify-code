@@ -18,6 +18,17 @@
     "src/packages"
   ],
 
+  "homepage": "https://github.com/apm29/box-verify-code",
+
+  "bugs": {
+    "url": "https://github.com/apm29/box-verify-code/issues"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:apm29/box-verify-code.git"
+  },
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
