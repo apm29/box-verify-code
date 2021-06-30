@@ -1,0 +1,34 @@
+{
+  "version": "0.0.1",
+  "name": "box-verify-code",
+  "description": "Vue3 验证码组件",
+  "author": "apm29",
+  "license": "MIT",
+  "private": false,
+
+  "main": "src/packages/index.js",
+
+  "keywords": [
+    "box-verify",
+    "验证码"
+  ],
+
+  "files": [
+    "dist",
+    "src/packages"
+  ],
+
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.0.5",
+    "vite": "^2.3.8"
+  }
+}
