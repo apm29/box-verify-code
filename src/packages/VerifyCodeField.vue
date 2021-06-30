@@ -1,29 +1,30 @@
 <template>
-  <label class="input-container">
+  <label class="tw-flex tw-flex-nowrap tw-justify-center">
     <input
-      :value="nonNullValue(captcha[index])"
-      class="input-cell"
-      v-for="(value, index) in size"
-      :key="value"
-      @keydown="
+        :value="nonNullValue(captcha[index])"
+        class="input-cell"
+        v-for="(value, index) in size"
+        :key="value"
+        @keydown="
         (event) =>
           !internalReadOnly && !internalDisabled && onAnyKeyDown(index, event)
       "
-      maxlength="1"
-      ref="input"
-      :disabled="internalDisabled"
-      :readonly="internalReadOnly"
-      v-bind="$attrs"
-      :placeholder="placeholder && placeholder[index]"
-      autocapitalize="characters"
+        maxlength="1"
+        ref="input"
+        :disabled="internalDisabled"
+        :readonly="internalReadOnly"
+        v-bind="$attrs"
+        :placeholder="placeholder && placeholder[index]"
+        autocapitalize="characters"
     />
   </label>
   <transition>
-    <div class="error-text" v-if="error">{{ error }}</div>
+    <div class="tw-text-red-500 tw-text-sm" v-if="error">{{ error }}</div>
   </transition>
 </template>
 
 <script>
+import "./index.css"
 import {
   computed,
   getCurrentInstance,
@@ -78,13 +79,13 @@ export default {
       }
     });
     watch(
-      value,
-      (newValue, oldValue) => {
-        if (newValue && newValue !== oldValue) {
-          captcha.value = String(newValue).split("");
-        }
-      },
-      { immediate: true }
+        value,
+        (newValue, oldValue) => {
+          if (newValue && newValue !== oldValue) {
+            captcha.value = String(newValue).split("");
+          }
+        },
+        { immediate: true }
     );
 
     const nonNullValue = function (value) {
@@ -98,10 +99,10 @@ export default {
     let onAnyKeyDown = function (index, event) {
       let input = event.target;
       if (
-        captcha.value[index] !== event.key &&
-        event.key.length === 1 &&
-        !event.metaKey &&
-        !event.ctrlKey
+          captcha.value[index] !== event.key &&
+          event.key.length === 1 &&
+          !event.metaKey &&
+          !event.ctrlKey
       ) {
         captcha.value[index] = event.key;
         event.preventDefault();
@@ -121,15 +122,15 @@ export default {
       }
 
       if (
-        event.target.nextSibling &&
-        event.target.nextSibling.focus &&
-        event.key.length === 1
+          event.target.nextSibling &&
+          event.target.nextSibling.focus &&
+          event.key.length === 1
       ) {
         event.target.nextSibling.focus();
       }
       internalValue.value = captcha.value
-        .map((it) => (it !== undefined && it !== null ? it : " "))
-        .join("");
+      .map((it) => (it !== undefined && it !== null ? it : " "))
+      .join("");
     };
     //endregion
 
@@ -149,10 +150,10 @@ export default {
     });
     let hasError = computed(() => Boolean(error.value));
     let internalReadOnly = computed(
-      () => Boolean(readonly.value) || Boolean(form.readonly)
+        () => Boolean(readonly.value) || Boolean(form.readonly)
     );
     let internalDisabled = computed(
-      () => Boolean(disabled.value) || Boolean(form.disabled)
+        () => Boolean(disabled.value) || Boolean(form.disabled)
     );
 
     let validate = function () {
@@ -163,16 +164,16 @@ export default {
       for (let index = 0; index < rules.value.length; index++) {
         const rule = rules.value[index];
         const valid =
-          typeof rule === "function"
-            ? rule(internalValue.value.replaceAll(/\s+/g, ""))
-            : rule;
+            typeof rule === "function"
+                ? rule(internalValue.value.replaceAll(/\s+/g, ""))
+                : rule;
 
         if (valid === false || typeof valid === "string") {
           errorBucket.push(valid || "");
         } else if (typeof valid !== "boolean") {
           console.warn(
-            `Rules should return a string or boolean, received '${typeof valid}' instead`,
-            componentInternalInstance
+              `Rules should return a string or boolean, received '${typeof valid}' instead`,
+              componentInternalInstance
           );
         }
       }
@@ -213,51 +214,20 @@ export default {
 };
 </script>
 <style scoped>
-.input-container{
-  display: flex;
-  flex-wrap: nowrap;
-  justify-items: center;
-  justify-content: center;
-}
-.error-text{
-  color: darkred;
-  font-size: small;
-}
 .input-cell {
-  --tw-ring-inset: 8px;
-  height: 3rem;
-  width: 3rem;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
-  box-shadow: var(--tw-ring-inset) 0 0 0 8px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem;
-  font-weight: lighter;
-  text-align: center;
-  font-size: 2rem;
-  text-transform: uppercase;
-  border: #2c3e50 1px solid;
-  outline: none;
+  @apply tw-w-12 tw-h-12
+  tw-shadow-lg
+  tw-rounded-lg
+  tw-m-2 tw-p-2
+  tw-ring-1 tw-ring-gray-400 tw-outline-none
+  tw-text-center
+  tw-font-light
+  tw-text-4xl
+  tw-uppercase
+  disabled:tw-shadow-none disabled:tw-border-trueGray-50 disabled:tw-bg-gray-100
+  focus:tw-outline-none  focus:tw-shadow-2xl focus:tw-ring-4 focus:tw-ring-purple-500 focus:tw-border-trueGray-50;
 }
-
-.input-cell:focus{
-  --tw-ring-inset: 8px;
-  outline: none;
-  box-shadow: var(--tw-ring-inset) 0 0 0 8px rgba(0, 0, 0, 0.1);
-  border-width: 3px;
-  border-color: blueviolet;
-}
-.input-cell:disabled{
-  box-shadow: none;
-  border-color: #2c3e50;
-  background-color: #f5f0f0;
-}
-
 .input-cell::placeholder {
-  color: darkgrey;
-  font-size: 2rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  @apply tw-text-gray-400 tw-text-lg tw-absolute tw-top-1/2 tw-left-1/2 tw--translate-x-1/2 tw--translate-y-1/2 tw-transform;
 }
 </style>

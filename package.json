@@ -1,34 +1,27 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.2",
   "name": "box-verify-code",
   "description": "Vue3 验证码组件",
   "author": "apm29",
   "license": "MIT",
   "private": false,
-
   "main": "src/packages/index.js",
-
   "keywords": [
     "box-verify",
     "验证码"
   ],
-
   "files": [
     "dist",
     "src/packages"
   ],
-
   "homepage": "https://github.com/apm29/box-verify-code",
-
   "bugs": {
     "url": "https://github.com/apm29/box-verify-code/issues"
   },
-
   "repository": {
     "type": "git",
     "url": "git@github.com:apm29/box-verify-code.git"
   },
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -38,8 +31,12 @@
     "vue": "^3.0.5"
   },
   "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.2.4",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
+    "autoprefixer": "^9",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vite": "^2.3.8"
   }
 }

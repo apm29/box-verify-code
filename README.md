@@ -69,3 +69,9 @@ export default {
   emits: ["update:value", "update:is-validate"],
 }
 ```
+
+
+### Versions
+
+#### 0.0.2: 
+*  引入tailwindcss来处理样式
