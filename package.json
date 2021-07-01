@@ -1,5 +1,5 @@
 {
-  "version": "0.0.9",
+  "version": "0.0.10",
   "name": "box-verify-code",
   "description": "Vue3 验证码组件",
   "author": "apm29",
