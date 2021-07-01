@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.8",
   "name": "box-verify-code",
   "description": "Vue3 验证码组件",
   "author": "apm29",
@@ -11,7 +11,7 @@
     "验证码"
   ],
   "files": [
-    "dist",
+    "dist/index.css",
     "src/packages"
   ],
   "homepage": "https://github.com/apm29/box-verify-code",
@@ -31,12 +31,11 @@
     "vue": "^3.0.5"
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.2.4",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
+    "tailwindcss": "^2.1.1",
     "autoprefixer": "^9",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "postcss": "^8.2.10",
     "vite": "^2.3.8"
   }
 }

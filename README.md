@@ -21,9 +21,15 @@ yarn add box-verify-code
 ### import
 ```js
 import VerifyCodeField from 'box-verify-code';
+import 'box-verify-code/dist/index.css';
 export default {
   components:{ VerifyCodeField }
 }
+```
+```vue
+<template>
+  <VerifyCodeField placeholder="请输入验证码"/>
+</template>
 ```
 
 
